@@ -310,7 +310,7 @@ export default function HomePage() {
           rows: 4,
           required: false,
         }}
-        buttonText="Book Service Appointment"
+        buttonText="Reserve a Workshop Slot"
         imageSrc="http://img.b2bpic.net/free-photo/repairman-workshop_1098-15533.jpg?_wi=2"
         textAnimation="fade-blur"
       />
