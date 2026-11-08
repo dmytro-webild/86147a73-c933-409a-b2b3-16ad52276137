@@ -91,7 +91,7 @@ export default function HomePage() {
           description: "Custom engineering for the perfect performance gravel or road machine.",
           buttonIcon: "Bike",
           buttonHref: "#contact",
-          imageSrc: "http://img.b2bpic.net/free-photo/repairman-workshop_1098-15533.jpg",
+          imageSrc: "http://img.b2bpic.net/free-photo/repairman-workshop_1098-15533.jpg?_wi=1",
         },
       ]}
       textAnimation="slide-up"
@@ -311,7 +311,7 @@ export default function HomePage() {
           required: false,
         }}
         buttonText="Book Service Appointment"
-        imageSrc="http://img.b2bpic.net/free-photo/repairman-workshop_1098-15533.jpg"
+        imageSrc="http://img.b2bpic.net/free-photo/repairman-workshop_1098-15533.jpg?_wi=2"
         textAnimation="fade-blur"
       />
     </SectionErrorBoundary>
