@@ -9,6 +9,8 @@ type InputField = {
   type: string;
   placeholder: string;
   required?: boolean;
+  label?: string;
+  options?: string[];
 };
 
 type TextareaField = {
@@ -16,6 +18,7 @@ type TextareaField = {
   placeholder: string;
   rows?: number;
   required?: boolean;
+  label?: string;
 };
 
 type ContactSplitFormProps = {
@@ -106,28 +109,63 @@ const ContactSplitForm = ({
 
               <div className="flex flex-col gap-3">
                 {inputs.map((input) => (
-                  <input
-                    key={input.name}
-                    type={input.type}
-                    placeholder={input.placeholder}
-                    value={formData[input.name] || ""}
-                    onChange={(e) => setFormData({ ...formData, [input.name]: e.target.value })}
-                    required={input.required}
-                    aria-label={input.placeholder}
-                    className="w-full px-5 py-3 text-base bg-transparent placeholder:opacity-75 focus:outline-none card rounded"
-                  />
+                  <div key={input.name} className="flex flex-col gap-1 text-left">
+                    {input.label && (
+                      <label htmlFor={input.name} className="text-xs font-semibold uppercase tracking-wider opacity-80 px-1">
+                        {input.label}
+                      </label>
+                    )}
+                    {input.type === "select" ? (
+                      <select
+                        id={input.name}
+                        value={formData[input.name] || ""}
+                        onChange={(e) => setFormData({ ...formData, [input.name]: e.target.value })}
+                        required={input.required}
+                        aria-label={input.placeholder || input.label}
+                        className="w-full px-5 py-3 text-base bg-transparent placeholder:opacity-75 focus:outline-none card rounded cursor-pointer"
+                      >
+                        <option value="" disabled className="bg-background text-foreground">
+                          {input.placeholder}
+                        </option>
+                        {input.options?.map((opt) => (
+                          <option key={opt} value={opt} className="bg-background text-foreground">
+                            {opt}
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <input
+                        id={input.name}
+                        type={input.type}
+                        placeholder={input.placeholder}
+                        value={formData[input.name] || ""}
+                        onChange={(e) => setFormData({ ...formData, [input.name]: e.target.value })}
+                        required={input.required}
+                        aria-label={input.placeholder || input.label}
+                        className="w-full px-5 py-3 text-base bg-transparent placeholder:opacity-75 focus:outline-none card rounded"
+                      />
+                    )}
+                  </div>
                 ))}
 
                 {textarea && (
-                  <textarea
-                    placeholder={textarea.placeholder}
-                    value={formData[textarea.name] || ""}
-                    onChange={(e) => setFormData({ ...formData, [textarea.name]: e.target.value })}
-                    required={textarea.required}
-                    rows={textarea.rows || 5}
-                    aria-label={textarea.placeholder}
-                    className="w-full px-5 py-3 text-base bg-transparent placeholder:opacity-75 focus:outline-none resize-none card rounded"
-                  />
+                  <div className="flex flex-col gap-1 text-left">
+                    {textarea.label && (
+                      <label htmlFor={textarea.name} className="text-xs font-semibold uppercase tracking-wider opacity-80 px-1">
+                        {textarea.label}
+                      </label>
+                    )}
+                    <textarea
+                      id={textarea.name}
+                      placeholder={textarea.placeholder}
+                      value={formData[textarea.name] || ""}
+                      onChange={(e) => setFormData({ ...formData, [textarea.name]: e.target.value })}
+                      required={textarea.required}
+                      rows={textarea.rows || 5}
+                      aria-label={textarea.placeholder || textarea.label}
+                      className="w-full px-5 py-3 text-base bg-transparent placeholder:opacity-75 focus:outline-none resize-none card rounded"
+                    />
+                  </div>
                 )}
 
                 <button

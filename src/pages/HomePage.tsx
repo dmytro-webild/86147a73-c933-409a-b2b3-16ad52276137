@@ -1,5 +1,5 @@
 import AboutTextSplit from '@/components/sections/about/AboutTextSplit';
-import ContactCta from '@/components/sections/contact/ContactCta';
+import ContactSplitForm from '@/components/sections/contact/ContactSplitForm';
 import FaqTabbedAccordion from '@/components/sections/faq/FaqTabbedAccordion';
 import FeaturesImageBento from '@/components/sections/features/FeaturesImageBento';
 import FeaturesMediaCarousel from '@/components/sections/features/FeaturesMediaCarousel';
@@ -71,20 +71,26 @@ export default function HomePage() {
       items={[
         {
           title: "Routine Maintenance",
+          price: "from $89",
           description: "Keep your daily commuter running like new with our comprehensive tune-up packages.",
           buttonIcon: "Wrench",
+          buttonHref: "#contact",
           imageSrc: "http://img.b2bpic.net/free-photo/man-s-hand-repairing-wheel-bicycle_23-2147892351.jpg",
         },
         {
           title: "Wheel Specialist",
+          price: "from $45",
           description: "Expert truing and custom wheel building for all riding styles.",
           buttonIcon: "Disc",
+          buttonHref: "#contact",
           imageSrc: "http://img.b2bpic.net/free-photo/auto-mechanic-checking-car_1303-14039.jpg",
         },
         {
           title: "Bespoke Builds",
+          price: "from $2,400",
           description: "Custom engineering for the perfect performance gravel or road machine.",
           buttonIcon: "Bike",
+          buttonHref: "#contact",
           imageSrc: "http://img.b2bpic.net/free-photo/repairman-workshop_1098-15533.jpg",
         },
       ]}
@@ -256,19 +262,58 @@ export default function HomePage() {
 
   <div id="contact" data-section="contact">
     <SectionErrorBoundary name="contact">
-          <ContactCta
-      tag="Get in Touch"
-      text="Ready to get back on the road? Book your service appointment with our experts today."
-      primaryButton={{
-        text: "Schedule Service",
-        href: "#",
-      }}
-      secondaryButton={{
-        text: "Ask a Question",
-        href: "#",
-      }}
-      textAnimation="fade-blur"
-    />
+      <ContactSplitForm
+        tag="Book a Service"
+        title="Schedule Your Service Appointment"
+        description="Select your service details and preferred date to book a spot at our Portland workshop."
+        inputs={[
+          {
+            name: "name",
+            type: "text",
+            placeholder: "Your Name",
+            label: "Name",
+            required: true,
+          },
+          {
+            name: "email",
+            type: "email",
+            placeholder: "your.email@example.com",
+            label: "Email",
+            required: true,
+          },
+          {
+            name: "bikeType",
+            type: "select",
+            placeholder: "Select Bike Type",
+            label: "Bike Type",
+            options: [
+              "Urban / Commuter Bike",
+              "Gravel / Adventure Bike",
+              "Road Bike",
+              "Custom Build Project",
+              "Other / E-Bike",
+            ],
+            required: true,
+          },
+          {
+            name: "preferredDate",
+            type: "date",
+            placeholder: "Select Preferred Date",
+            label: "Preferred Date",
+            required: true,
+          },
+        ]}
+        textarea={{
+          name: "message",
+          placeholder: "Tell us about your bike or specific repair/build needs...",
+          label: "Message",
+          rows: 4,
+          required: false,
+        }}
+        buttonText="Book Service Appointment"
+        imageSrc="http://img.b2bpic.net/free-photo/repairman-workshop_1098-15533.jpg"
+        textAnimation="fade-blur"
+      />
     </SectionErrorBoundary>
   </div>
     </>
