@@ -9,6 +9,7 @@ import { resolveIcon } from "@/utils/resolve-icon";
 type FeatureItem = {
   title: string;
   description: string;
+  price?: string;
   buttonIcon: string | LucideIcon;
   buttonHref?: string;
   buttonOnClick?: () => void;
@@ -33,7 +34,12 @@ const FeatureMediaCarouselCard = ({ item }: { item: FeatureItem }) => {
       <ImageOrVideo imageSrc={item.imageSrc} videoSrc={item.videoSrc} className="absolute inset-0" />
       <div className="absolute inset-x-4 bottom-4 xl:inset-x-5 xl:bottom-5 2xl:inset-x-6 2xl:bottom-6 flex items-center justify-between gap-5 p-4 xl:p-5 2xl:p-6 card rounded backdrop-blur-sm">
         <div className="flex flex-col gap-1 min-w-0">
-          <h3 className="text-2xl font-semibold leading-snug truncate">{item.title}</h3>
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <h3 className="text-2xl font-semibold leading-snug truncate">{item.title}</h3>
+            {item.price && (
+              <span className="text-sm font-semibold px-2.5 py-0.5 card rounded shrink-0">{item.price}</span>
+            )}
+          </div>
           <p className="text-base leading-snug truncate">{item.description}</p>
         </div>
         <a
