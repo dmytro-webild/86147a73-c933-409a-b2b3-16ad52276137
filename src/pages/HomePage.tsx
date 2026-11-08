@@ -17,7 +17,7 @@ export default function HomePage() {
           <HeroTiltedCards
       tag="Expert Portland Cycleworks"
       title="Precision Tuning for Portland’s Dedicated Daily Riders"
-      description="From routine maintenance to custom-engineered gravel builds, we keep your wheels turning with expert craftsmanship. Book your service today."
+      description="From routine maintenance to custom-engineered gravel builds, we keep your wheels turning with expert craftsmanship. Same-day turnarounds available—book your service today."
       primaryButton={{
         text: "Book Your Service",
         href: "#contact",
